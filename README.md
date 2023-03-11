@@ -1,5 +1,7 @@
 # Blog Post
-For more explanation about the code you can find the blog post here: https://medium.com/@mrahimi_29846/stock-price-prediction-with-regression-models-365487c48809
+For more explanation about the code you can find the blog post here: 
+
+https://medium.com/@mrahimi_29846/stock-price-prediction-with-regression-models-365487c48809
 
 # Code
 In this repository we will show how to build regression models to predict the close price of your favorite stocks for the next 30 days. 
