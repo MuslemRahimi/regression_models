@@ -76,16 +76,14 @@ class regression_model:
         X_test, y_test = create_dataset(test_data)
 
 
-        if self.model_name == 'LinearRegression':
+        if self.model_name == 'Linear Regression':
             model = LinearRegression()
         elif self.model_name == "XGBoost":
             model = XGBRegressor()
-        elif self.model_name == "SVR":
+        elif self.model_name == "Support Vector Regressor":
             model = SVR()
-        elif self.model_name == 'RandomForestRegressor':
+        elif self.model_name == 'Random Forest Regressor':
             model = RandomForestRegressor()
-        elif self.model_name == 'KNeighborsRegressor':
-            model = KNeighborsRegressor()
         else:
             model = LinearRegression()
             
@@ -333,7 +331,7 @@ if __name__ == '__main__':
     test_var_list = []
     test_r2_list = []
 
-    for model_name in ['LinearRegression','SVR','RandomForestRegressor']:
+    for model_name in ['Linear Regression','Support Vector Regressor','Random Forest Regressor']:
         print("=======================")
 
         metric, train_df, test_df, pred_df = regression_model(model_name,df,test_size = test_size,\
