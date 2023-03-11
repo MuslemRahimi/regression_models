@@ -1,6 +1,7 @@
-# regression_models
+# Blog Post
 For more explanation about the code you can find the blog post here: medium.com/muslemrahimi
 
+# Code
 In this repository we will show how to build regression models to predict the close price of your favorite stocks for the next 30 days. 
 
 
@@ -19,4 +20,6 @@ Furthermore we compared the three different regression models based on the varia
 
 
 
-To quickly test the code without the hassle of installing libraries and compiling it on your local machine, visit https://stocknear.com. You can find everything we have discussed and more on my website, which offers a user-friendly interface to begin predicting stock prices for your favorite stocks instantly.
+# Faster solution
+To quickly test the code without the hassle of installing libraries and compiling it on your local machine, visit https://stocknear.com. 
+You can find everything we have discussed and more on my website, which offers a user-friendly interface to begin predicting stock prices for your favorite stocks instantly.
