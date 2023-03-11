@@ -1,21 +1,13 @@
 import numpy as np
 import pandas as pd
-from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
-
 from sklearn.linear_model import LinearRegression
 from sklearn.svm import SVR
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.neighbors import KNeighborsRegressor
-
 from sklearn.metrics import explained_variance_score,r2_score
-
 from datetime import datetime, timedelta
-from xgboost import XGBRegressor
 import yfinance as yf
 import matplotlib.pyplot as plt
-import matplotlib.dates as dates
-import matplotlib.ticker as ticker
 
 
 class regression_model:
@@ -198,10 +190,11 @@ class regression_model:
 
 
 
-def plot_result():
+def plot_result(train_df, test_df, pred_df):
 
     fig, ax = plt.subplots(figsize=(20, 10))
-
+    
+    #Only plot the last 100 datapoints
     plot_train_df = train_df[-100:].reset_index(drop=True)
     new_index = range(len(plot_train_df), len(plot_train_df)+len(test_df))
     
@@ -210,13 +203,11 @@ def plot_result():
 
     mask = (df['Date'] >= plot_train_df['Date'].iloc[0]) & (df['Date'] <= test_df['Date'].iloc[-1])
     # filter the dataframe using the boolean mask
-    filtered_df = df.loc[mask].reset_index(drop=True)
-
-    #print(plot_train_df)
-    #print(test_df)
+    actual_df = df.loc[mask].reset_index(drop=True)
 
 
-    ax.plot(filtered_df['Date'],filtered_df['Close'], linewidth=2, color='black',label='Actual Price')
+
+    ax.plot(actual_df['Date'],actual_df['Close'], linewidth=2, color='black',label='Actual Price')
     ax.plot(plot_train_df['Date'],plot_train_df['train'], linewidth=2.5,linestyle="dashed", color='blue',label='Train set')
     ax.plot(test_df['Date'],test_df['test'], linewidth=2.5,linestyle="dashed",color='red',label='Test set')
 
@@ -320,7 +311,7 @@ def plot_metric(train_var_list, train_r2_list, test_var_list, test_r2_list):
         bbox_to_anchor=(0.15, -0.40),shadow=True,fontsize=20)
 
 
-    plt.savefig("plots/metric_regression.png",bbox_inches='tight')
+    plt.savefig("plots/metric_score.png",bbox_inches='tight')
 
 
 
@@ -354,7 +345,7 @@ if __name__ == '__main__':
         test_var_list.append(metric['test_variance_score'].iloc[0])
         test_r2_list.append(metric['test_r2_score'].iloc[0])
 
-        #plot_result()
+        plot_result(train_df, test_df, pred_df)
         print(metric)
         print(model_name + " finished")
 
